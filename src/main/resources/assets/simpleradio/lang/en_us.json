@@ -1,0 +1,19 @@
+{
+  "key.categories.simpleradio": "Simple Radio",
+  "key.simpleradio.ptt": "Push To Talk",
+
+  "itemGroup.simpleradio": "Radio Utils",
+  "item.simpleradio.radio": "Walkie Talkie",
+
+  "gui.simpleradio.title": "Radio Settings",
+  "gui.simpleradio.connectButton": "Connect",
+  "gui.simpleradio.disconnectButton": "Disconnect",
+  "gui.simpleradio.channelSlider": "Channel",
+  "gui.simpleradio.volumeSlider": "Volume",
+
+  "simpleradio.subtitle.radio_on": "Radio On",
+  "simpleradio.subtitle.radio_off": "Radio Off",
+
+  "text.simpleradio.channel": "Channel",
+  "text.simpleradio.volume": "Volume"
+}

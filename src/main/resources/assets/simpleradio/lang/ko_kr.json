@@ -1,0 +1,19 @@
+{
+  "key.categories.simpleradio": "무전기 모드",
+  "key.simpleradio.ptt": "눌러서 말하기",
+
+  "itemGroup.simpleradio": "무전기 탭",
+  "item.simpleradio.radio": "무전기",
+
+  "gui.simpleradio.title": "무전기 패널",
+  "gui.simpleradio.connectButton": "연결",
+  "gui.simpleradio.disconnectButton": "연결 해제",
+  "gui.simpleradio.channelSlider": "채널",
+  "gui.simpleradio.volumeSlider": "볼륨",
+
+  "simpleradio.subtitle.radio_on": "무전기 연결함",
+  "simpleradio.subtitle.radio_off": "무전기 수신완료함",
+
+  "text.simpleradio.channel": "채널",
+  "text.simpleradio.volume": "볼륨"
+}
