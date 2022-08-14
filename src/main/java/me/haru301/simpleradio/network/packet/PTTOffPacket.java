@@ -1,6 +1,7 @@
 package me.haru301.simpleradio.network.packet;
 
 import me.haru301.simpleradio.RadioChannel;
+import me.haru301.simpleradio.SimpleRadioAddon;
 import me.haru301.simpleradio.network.PacketHandler;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
@@ -42,7 +43,6 @@ public class PTTOffPacket
                 //check if sender actually in PTT hashmap
                 if(!RadioChannel.hasPlayerInPTT(sender, channel))
                     return;
-                //TODO Bug CHECK
 
                 //only remove if uuid matches channel
                 RadioChannel.removePTT(channel, sender);

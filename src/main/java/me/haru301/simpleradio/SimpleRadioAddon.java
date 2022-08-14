@@ -1,22 +1,18 @@
 package me.haru301.simpleradio;
 
 import de.maxhenkel.voicechat.api.*;
-import de.maxhenkel.voicechat.api.events.EventRegistration;
-import de.maxhenkel.voicechat.api.events.MicrophonePacketEvent;
-import de.maxhenkel.voicechat.api.events.StaticSoundPacketEvent;
-import de.maxhenkel.voicechat.api.events.VoicechatServerStoppedEvent;
+import de.maxhenkel.voicechat.api.events.*;
 import de.maxhenkel.voicechat.api.opus.OpusDecoder;
 import de.maxhenkel.voicechat.api.opus.OpusEncoder;
 import me.haru301.simpleradio.init.ModItems;
 import me.haru301.simpleradio.item.RadioItem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 
 @ForgeVoicechatPlugin
 public class SimpleRadioAddon implements VoicechatPlugin
 {
-    private OpusDecoder decoder;
-    private OpusEncoder encoder;
 
     @Override
     public String getPluginId()
@@ -27,8 +23,6 @@ public class SimpleRadioAddon implements VoicechatPlugin
     @Override
     public void initialize(VoicechatApi api)
     {
-        encoder = api.createEncoder();
-        decoder = api.createDecoder();
         SimpleRadio.LOGGER.info("INITIALIZED");
     }
 
@@ -36,7 +30,13 @@ public class SimpleRadioAddon implements VoicechatPlugin
     public void registerEvents(EventRegistration regi)
     {
         regi.registerEvent(MicrophonePacketEvent.class, this::onVoice);
-        regi.registerEvent(VoicechatServerStoppedEvent.class, this::onServerStop);
+        regi.registerEvent(ClientReceiveSoundEvent.StaticSound.class, this::onVoiceReceive);
+    }
+
+    private void onVoiceReceive(ClientReceiveSoundEvent.StaticSound event)
+    {
+        short volume = RadioItem.getVolume(Minecraft.getInstance().player.getHeldItemMainhand());
+        event.setRawAudio(adjustVolume(event.getRawAudio(), volume));
     }
 
     private void onVoice(MicrophonePacketEvent event)
@@ -72,20 +72,12 @@ public class SimpleRadioAddon implements VoicechatPlugin
     {
         for(ServerPlayerEntity p : RadioChannel.getPlayerFromChannel(channel))
         {
-            if(p.equals(sender)) //check if sender
-                continue;
+            //if(p.equals(sender)) //check if sender
+            //    continue;
             VoicechatConnection con = api.getConnectionOf(p.getUniqueID());
             if(con == null)
                 continue;
-
-            short volume = RadioItem.getVolume(p.getHeldItemMainhand());
-            short[] audio = decoder.decode(e.getPacket().getOpusEncodedData());
-            audio = adjustVolume(audio, volume);
-
-            byte[] audioEncoded = encoder.encode(audio);
-
-            //Send Audio Packet with Sound Data To RadioChannel Conncected Players.
-            api.sendStaticSoundPacketTo(con, e.getPacket().staticSoundPacketBuilder().opusEncodedData(audioEncoded).build());
+            api.sendStaticSoundPacketTo(con, e.getPacket().staticSoundPacketBuilder().build());
         }
     }
 
@@ -97,13 +89,6 @@ public class SimpleRadioAddon implements VoicechatPlugin
             short audioSample = audio[i];
             array[i] = (short) (audioSample * volume/100);
         }
-
         return array;
-    }
-
-    public void onServerStop(VoicechatServerStoppedEvent event)
-    {
-        decoder.close();
-        encoder.close();
     }
 }
