@@ -38,10 +38,22 @@ public class RadioChannel
 
     public static boolean isPTTValid(Short channel, ServerPlayerEntity uuid)
     {
-        if(ptt.get(channel) == (uuid))
-            return true;
-        else
-            return false;
+        return ptt.get(channel).equals(uuid);
+    }
+
+    public static boolean hasPlayerInPTT(ServerPlayerEntity p)
+    {
+        for(short key : ptt.keySet())
+        {
+            if(ptt.get(key).equals(p))
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean hasPlayerInPTT(ServerPlayerEntity p, short channel)
+    {
+        return ptt.get(channel).equals(p);
     }
 
     public static void addPlayerToChannel(ServerPlayerEntity player, short channel)

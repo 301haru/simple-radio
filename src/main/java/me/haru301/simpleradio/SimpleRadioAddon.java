@@ -53,8 +53,7 @@ public class SimpleRadioAddon implements VoicechatPlugin
 
         //Can use radio when player is holding
         ItemStack mainHand = sender.getHeldItemMainhand();
-        Short channel = RadioItem.getChannel(mainHand);
-        Short volume = RadioItem.getVolume(mainHand);
+        short channel = RadioItem.getChannel(mainHand);
 
         //SimpleRadio.LOGGER.info(volume + " " + channel);
 

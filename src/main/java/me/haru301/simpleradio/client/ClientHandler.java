@@ -1,13 +1,12 @@
 package me.haru301.simpleradio.client;
 
 import me.haru301.simpleradio.SimpleRadio;
-import me.haru301.simpleradio.client.gui.Gui;
+import me.haru301.simpleradio.client.gui.OverlayHandler;
 import me.haru301.simpleradio.item.RadioItem;
 import me.haru301.simpleradio.network.PacketHandler;
 import me.haru301.simpleradio.network.packet.PTTOffPacket;
 import me.haru301.simpleradio.network.packet.PTTOnPacket;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -24,9 +23,12 @@ public class ClientHandler
 
     public static void init()
     {
-        KeyBinds.register();
         mc = Minecraft.getInstance();
         isPTT=false;
+
+
+        OverlayHandler.init();
+        KeyBinds.register();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -34,19 +36,18 @@ public class ClientHandler
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.phase == TickEvent.Phase.START){
             ItemStack itemStack = event.player.getHeldItemMainhand();
-            if(itemStack.getItem() instanceof RadioItem)
+            short channel = RadioItem.getChannel(itemStack);
+            if(KeyBinds.PTT_KEY.isKeyDown() && !isPTT && itemStack.getItem() instanceof RadioItem)
             {
-                Short channel = RadioItem.getChannel(itemStack);
-                if(KeyBinds.PTT_KEY.isKeyDown() && !isPTT)
-                {
-                    PacketHandler.INSTANCE.sendToServer(new PTTOnPacket(channel));
-                    isPTT=true;
-                }
-                else if(!KeyBinds.PTT_KEY.isKeyDown() && isPTT)
-                {
-                    PacketHandler.INSTANCE.sendToServer(new PTTOffPacket(channel));
-                    isPTT=false;
-                }
+                //SimpleRadio.LOGGER.info("PTTONPacket Sent!");
+                PacketHandler.INSTANCE.sendToServer(new PTTOnPacket(channel));
+                isPTT=true;
+            }
+            else if(!KeyBinds.PTT_KEY.isKeyDown() && isPTT)
+            {
+                //SimpleRadio.LOGGER.info("PTTOFFPacket Sent!");
+                PacketHandler.INSTANCE.sendToServer(new PTTOffPacket(channel));
+                isPTT=false;
             }
         }
     }

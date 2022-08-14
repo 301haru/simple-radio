@@ -4,7 +4,6 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import me.haru301.simpleradio.SimpleRadio;
 import me.haru301.simpleradio.client.gui.widget.VolumeSlider;
 import me.haru301.simpleradio.client.gui.widget.ForgeSlider;
-import me.haru301.simpleradio.init.ModSounds;
 import me.haru301.simpleradio.item.RadioItem;
 import me.haru301.simpleradio.network.PacketHandler;
 import me.haru301.simpleradio.network.packet.PlayerConnectRadioPacket;
@@ -23,13 +22,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class Gui extends Screen
+public class GuiHandler extends Screen
 {
     private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(SimpleRadio.MOD_ID, "textures/gui/gui_background.png");
 
     private ItemStack stack;
 
-    public Gui(ITextComponent titleIn, ItemStack stack)
+    public GuiHandler(ITextComponent titleIn, ItemStack stack)
     {
         super(titleIn);
         this.stack = stack;

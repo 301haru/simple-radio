@@ -1,6 +1,6 @@
 package me.haru301.simpleradio.item;
 
-import me.haru301.simpleradio.client.gui.Gui;
+import me.haru301.simpleradio.client.gui.GuiHandler;
 import me.haru301.simpleradio.init.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
@@ -11,7 +11,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -36,7 +35,7 @@ public class RadioItem extends Item
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
     {
         ItemStack stack = player.getHeldItemMainhand();
-        Minecraft.getInstance().displayGuiScreen(new Gui(new TranslationTextComponent("gui.walkietalkie.settings"), stack));
+        Minecraft.getInstance().displayGuiScreen(new GuiHandler(new TranslationTextComponent("gui.walkietalkie.settings"), stack));
         return super.onItemRightClick(world, player, hand);
     }
 

@@ -2,10 +2,12 @@ package me.haru301.simpleradio.network.packet;
 
 import me.haru301.simpleradio.RadioChannel;
 import me.haru301.simpleradio.item.RadioItem;
+import me.haru301.simpleradio.network.PacketHandler;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.UUID;
@@ -44,7 +46,10 @@ public class PTTOnPacket
                     return;
 
                 if(RadioChannel.isPTTEmpty(channel))
+                {
                     RadioChannel.addPTT(channel,sender);
+                    PacketHandler.INSTANCE.sendTo(new PTTOverlayPacket(true), sender.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
+                }
                 else sender.sendMessage(new TranslationTextComponent("someoneusing"), Util.DUMMY_UUID); //TODO
             }
         });
