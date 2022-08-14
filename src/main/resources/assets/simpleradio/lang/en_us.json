@@ -15,5 +15,6 @@
   "simpleradio.subtitle.radio_off": "Radio Off",
 
   "text.simpleradio.channel": "Channel",
-  "text.simpleradio.volume": "Volume"
+  "text.simpleradio.volume": "Volume",
+  "text.simpleradio.alreadyusing": "Radio channel already in Use"
 }

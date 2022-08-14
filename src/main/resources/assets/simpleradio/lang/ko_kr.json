@@ -15,5 +15,6 @@
   "simpleradio.subtitle.radio_off": "무전기 수신완료함",
 
   "text.simpleradio.channel": "채널",
-  "text.simpleradio.volume": "볼륨"
+  "text.simpleradio.volume": "볼륨",
+  "text.simpleradio.alreadyusing": "채널이 이미 사용중입니다"
 }

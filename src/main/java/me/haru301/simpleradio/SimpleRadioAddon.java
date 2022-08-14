@@ -58,12 +58,13 @@ public class SimpleRadioAddon implements VoicechatPlugin
         //SimpleRadio.LOGGER.info(volume + " " + channel);
 
         if(mainHand.getItem() instanceof RadioItem) {
-            //check Player holding Radio PTT key
-            if(!RadioChannel.isPTTValid(channel, sender))
-                return;
-
             if(RadioChannel.hasPlayer(sender))
+            {
+                //check Player holding Radio PTT key
+                if(!RadioChannel.isPTTValid(channel, sender))
+                    return;
                 playStaticSound(api, event, sender, channel);
+            }
         }
     }
 

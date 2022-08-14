@@ -19,6 +19,7 @@ public class PacketHandler
         int id = 0;
         INSTANCE.messageBuilder(PlayRadioOffSoundPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(PlayRadioOffSoundPacket::encode).decoder(PlayRadioOffSoundPacket::new).consumer(PlayRadioOffSoundPacket::handle).add();
         INSTANCE.messageBuilder(PlayRadioOnSoundPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(PlayRadioOnSoundPacket::encode).decoder(PlayRadioOnSoundPacket::new).consumer(PlayRadioOnSoundPacket::handle).add();
+        INSTANCE.messageBuilder(PlayRadioUnableSoundPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(PlayRadioUnableSoundPacket::encode).decoder(PlayRadioUnableSoundPacket::new).consumer(PlayRadioUnableSoundPacket::handle).add();
         INSTANCE.messageBuilder(PTTOverlayPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(PTTOverlayPacket::encode).decoder(PTTOverlayPacket::new).consumer(PTTOverlayPacket::handle).add();
 
         /*INSTANCE.messageBuilder(RadioStatePacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(RadioStatePacket::encode).decoder(RadioStatePacket::new).consumer(RadioStatePacket::handle).add();

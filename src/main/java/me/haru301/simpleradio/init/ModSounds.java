@@ -13,6 +13,7 @@ public class ModSounds
 
     public static final RegistryObject<SoundEvent> RADIO_ON = register("radio_on");
     public static final RegistryObject<SoundEvent> RADIO_OFF = register("radio_off");
+    public static final RegistryObject<SoundEvent> RADIO_UNABLE = register("radio_unable");
 
     private static RegistryObject<SoundEvent> register(String key)
     {

@@ -1,10 +1,14 @@
 {
   "radio_on": {
     "subtitle": "simpleradio.subtitle.radio_on",
-    "sounds": [ "simpleradio:radio_on"]
+    "sounds": ["simpleradio:radio_on"]
   },
   "radio_off": {
     "subtitle": "simpleradio.subtitle.radio_off",
-    "sounds": [ "simpleradio:radio_off"]
+    "sounds": ["simpleradio:radio_off"]
+  },
+  "radio_unable": {
+    "subtitle": "simpleradio.subtitle.radio_unable",
+    "sounds": ["simpleradio:radio_unable"]
   }
 }

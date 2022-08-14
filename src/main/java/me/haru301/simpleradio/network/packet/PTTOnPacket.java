@@ -50,7 +50,11 @@ public class PTTOnPacket
                     RadioChannel.addPTT(channel,sender);
                     PacketHandler.INSTANCE.sendTo(new PTTOverlayPacket(true), sender.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
                 }
-                else sender.sendMessage(new TranslationTextComponent("someoneusing"), Util.DUMMY_UUID); //TODO
+                else
+                {
+                    sender.sendMessage(new TranslationTextComponent("text.simpleradio.alreadyusing"), Util.DUMMY_UUID);
+                    PacketHandler.INSTANCE.sendTo(new PlayRadioUnableSoundPacket(), sender.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
+                }
             }
         });
         ctx.get().setPacketHandled(true);

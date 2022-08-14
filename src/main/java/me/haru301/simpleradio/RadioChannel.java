@@ -38,6 +38,7 @@ public class RadioChannel
 
     public static boolean isPTTValid(Short channel, ServerPlayerEntity uuid)
     {
+        if(ptt.get(channel)==null) return false;
         return ptt.get(channel).equals(uuid);
     }
 
