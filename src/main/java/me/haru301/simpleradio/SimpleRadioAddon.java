@@ -35,8 +35,8 @@ public class SimpleRadioAddon implements VoicechatPlugin
 
     private void onVoiceReceive(ClientReceiveSoundEvent.StaticSound event)
     {
-        short volume = RadioItem.getVolume(Minecraft.getInstance().player.getHeldItemMainhand());
-        event.setRawAudio(adjustVolume(event.getRawAudio(), volume));
+        short volumePercent = RadioItem.getVolume(Minecraft.getInstance().player.getHeldItemMainhand());
+        event.setRawAudio(adjustVolume(event.getRawAudio(), volumePercent));
     }
 
     private void onVoice(MicrophonePacketEvent event)
@@ -72,8 +72,8 @@ public class SimpleRadioAddon implements VoicechatPlugin
     {
         for(ServerPlayerEntity p : RadioChannel.getPlayerFromChannel(channel))
         {
-            //if(p.equals(sender)) //check if sender
-            //    continue;
+            if(p.equals(sender)) //check if sender
+                continue;
             VoicechatConnection con = api.getConnectionOf(p.getUniqueID());
             if(con == null)
                 continue;
@@ -81,13 +81,18 @@ public class SimpleRadioAddon implements VoicechatPlugin
         }
     }
 
-    private short[] adjustVolume(short[] audio, double volume)
+    private short[] adjustVolume(short[] audio, short volumePercent)
     {
+        float fvolume = volumePercent/100f;
         short[] array = new short[audio.length];
         for (int i=0; i<audio.length; i++)
         {
-            short audioSample = audio[i];
-            array[i] = (short) (audioSample * volume/100);
+            float audioSample = audio[i] * fvolume;
+            if(audioSample>Short.MAX_VALUE)
+                audioSample=Short.MAX_VALUE;
+            else if(audioSample<Short.MIN_VALUE)
+                audioSample=Short.MIN_VALUE;
+            array[i] = (short) audioSample;
         }
         return array;
     }
