@@ -24,13 +24,11 @@ public class RadioChannel
 
     public static void addPTT(Short channel, ServerPlayerEntity uuid)
     {
-        uuid.sendMessage(new StringTextComponent("[디버그용] 무전기 마이크 켜짐"), Util.DUMMY_UUID);
         ptt.put(channel,uuid);
     }
 
     public static void removePTT(Short channel, ServerPlayerEntity uuid)
     {
-        uuid.sendMessage(new StringTextComponent("[디버그용] 무전기 마이크 꺼짐"), Util.DUMMY_UUID);
         ptt.remove(channel, uuid);
         for(ServerPlayerEntity p : getPlayerFromChannel(channel))
             PacketHandler.INSTANCE.sendTo(new PlayRadioOffSoundPacket(), p.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
