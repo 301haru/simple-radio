@@ -1,13 +1,26 @@
 # Simple Radio
+Addon that adds a simple 2-way radio. Works with 1.16.5 Forge only.
 
-1.16.5 Forge Mod adding functional radio(walkie talkie), addon of henkelmax's simple voice chat mod.
+## Downloads
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/simple-radio/files)
 
-You need forge 1.16.5 36.2.35+ Simple Radio Mod 1.16.5 2.3.3+ to run this mod.
 
-https://www.curseforge.com/minecraft/mc-mods/simple-voice-chat/files
 
-Radio Feature : Channels, Volume Adjustment
+## How to Use
+You need to install Simple Voice Chat mod to use it.
+After then, you must make two seperated push-to-talk key settings as same.
+(default is Caps Lock and V key. You mush equalize them)
 
-Commands : /radio (channel) You can see who's connecting to the radio channel.
 
-If you find bug, please make issue thank you.
+
+## Features
+- Push to talk
+- Radio volume adjustment
+- Channels
+- Only one player transmitting at a time
+
+
+
+## Commands
+/radio <channel> 
+- You can see who's connecting to the specific channel number.
