@@ -1,0 +1,20 @@
+{
+    "key.categories.simpleradio": "Simple Radio",
+    "key.simpleradio.ptt": "Appuyer pour parler",
+  
+    "itemGroup.simpleradio": "Radio Utils",
+    "item.simpleradio.radio": "Talkie Walkie",
+  
+    "gui.simpleradio.title": "Configurations de la radio",
+    "gui.simpleradio.connectButton": "Connexion",
+    "gui.simpleradio.disconnectButton": "Déconnexion",
+    "gui.simpleradio.channelSlider": "Canal",
+    "gui.simpleradio.volumeSlider": "Volume",
+  
+    "simpleradio.subtitle.radio_on": "Radio On",
+    "simpleradio.subtitle.radio_off": "Radio Off",
+  
+    "text.simpleradio.channel": "Canal",
+    "text.simpleradio.volume": "Volume",
+    "text.simpleradio.alreadyusing": "Quelqu'un utilise déjà le canal"
+}
