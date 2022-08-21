@@ -10,6 +10,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import me.haru301.simpleradio.RadioChannel;
 import me.haru301.simpleradio.SimpleRadio;
+import me.haru301.simpleradio.config.ModConfigs;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;

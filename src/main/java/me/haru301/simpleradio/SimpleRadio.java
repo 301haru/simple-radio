@@ -1,6 +1,7 @@
 package me.haru301.simpleradio;
 
 import me.haru301.simpleradio.client.ClientHandler;
+import me.haru301.simpleradio.config.ModConfigs;
 import me.haru301.simpleradio.init.ModItems;
 import me.haru301.simpleradio.init.ModSounds;
 import me.haru301.simpleradio.network.PacketHandler;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 public class SimpleRadio
 {
     public static final String MOD_ID = "simpleradio";
-    public static final short CH_SIZE = 10;
+    public static short CH_SIZE = 10;
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static final ItemGroup GROUP = new ItemGroup(MOD_ID)
@@ -48,6 +49,7 @@ public class SimpleRadio
         bus.addListener(this::onCommonSetup);
         ModSounds.REGISTER.register(bus);
         ModItems.REGISTER.register(bus);
+        ModConfigs.init();
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event)

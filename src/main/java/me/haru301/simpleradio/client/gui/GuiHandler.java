@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import me.haru301.simpleradio.SimpleRadio;
 import me.haru301.simpleradio.client.gui.widget.VolumeSlider;
 import me.haru301.simpleradio.client.gui.widget.ForgeSlider;
+import me.haru301.simpleradio.config.ModConfigs;
 import me.haru301.simpleradio.item.RadioItem;
 import me.haru301.simpleradio.network.PacketHandler;
 import me.haru301.simpleradio.network.packet.PlayerConnectRadioPacket;

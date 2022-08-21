@@ -4,7 +4,7 @@ plugins {
 
 
 group = 'me.haru301'
-version = '1.1.2'
+version = '1.1.3'
 
 java {
     archivesBaseName = 'simpleradio'

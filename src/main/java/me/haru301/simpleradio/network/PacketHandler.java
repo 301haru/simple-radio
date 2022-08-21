@@ -22,6 +22,8 @@ public class PacketHandler
         INSTANCE.messageBuilder(PlayRadioUnableSoundPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(PlayRadioUnableSoundPacket::encode).decoder(PlayRadioUnableSoundPacket::new).consumer(PlayRadioUnableSoundPacket::handle).add();
         INSTANCE.messageBuilder(PTTOverlayPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(PTTOverlayPacket::encode).decoder(PTTOverlayPacket::new).consumer(PTTOverlayPacket::handle).add();
 
+        INSTANCE.messageBuilder(SyncServerConfigPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(SyncServerConfigPacket::encode).decoder(SyncServerConfigPacket::new).consumer(SyncServerConfigPacket::handle).add();
+
         /*INSTANCE.messageBuilder(RadioStatePacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(RadioStatePacket::encode).decoder(RadioStatePacket::new).consumer(RadioStatePacket::handle).add();
         INSTANCE.messageBuilder(RadioUUIDPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT).encoder(RadioUUIDPacket::encode).decoder(RadioUUIDPacket::new).consumer(RadioUUIDPacket::handle).add();
 */
