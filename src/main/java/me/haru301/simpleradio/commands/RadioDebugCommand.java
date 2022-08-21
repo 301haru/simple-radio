@@ -16,6 +16,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.commons.io.IOUtils;
 
 import java.net.URL;
@@ -33,11 +34,11 @@ public class RadioDebugCommand
             ServerPlayerEntity p = source.getSource().asPlayer();
             if(channel> SimpleRadio.CH_SIZE)
             {
-                p.sendMessage(new StringTextComponent("채널 번호: 1~"+SimpleRadio.CH_SIZE+" 까지"), Util.DUMMY_UUID);
+                p.sendMessage(new TranslationTextComponent("text.simpleradio.channel").appendString(": 1~"+SimpleRadio.CH_SIZE), Util.DUMMY_UUID);
                 return 1;
             }
             List<ServerPlayerEntity> uuid = RadioChannel.getPlayerFromChannel((short)channel);
-            p.sendMessage(new StringTextComponent("<채널 "+channel+" 접속 현황>"), Util.DUMMY_UUID);
+            p.sendMessage(new StringTextComponent("<Channel "+channel+" Connection Status>"), Util.DUMMY_UUID);
             for(ServerPlayerEntity a : uuid)
                 p.sendMessage(new StringTextComponent("- " + a.getName().getString() + " ("+a.getUniqueID()+")"), Util.DUMMY_UUID);
             return 1;
