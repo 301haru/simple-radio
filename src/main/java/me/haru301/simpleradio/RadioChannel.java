@@ -52,6 +52,8 @@ public class RadioChannel
 
     public static boolean hasPlayerInPTT(ServerPlayerEntity p, short channel)
     {
+        if(ptt.get(channel)==null)
+            return false;
         return ptt.get(channel).equals(p);
     }
 
