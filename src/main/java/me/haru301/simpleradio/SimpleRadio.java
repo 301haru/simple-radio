@@ -31,6 +31,7 @@ public class SimpleRadio
 {
     public static final String MOD_ID = "simpleradio";
     public static short CH_SIZE = 10;
+    public static boolean radioFilter = false;
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static final ItemGroup GROUP = new ItemGroup(MOD_ID)

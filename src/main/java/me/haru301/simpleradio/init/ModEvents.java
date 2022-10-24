@@ -35,6 +35,8 @@ public class ModEvents
     @SubscribeEvent
     public static void onLogIn(PlayerEvent.PlayerLoggedInEvent event)
     {
+        //TODO Make Radio Filter Methods
+
         ServerPlayerEntity sp = (ServerPlayerEntity) event.getEntity();
         PacketHandler.INSTANCE.sendTo(new SyncServerConfigPacket(ModConfigs.CHANNEL_SIZE.get().shortValue()), sp.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
         SimpleRadio.CH_SIZE = ModConfigs.CHANNEL_SIZE.get().shortValue();
